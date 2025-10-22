@@ -3,15 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="E-commerce Platform with PayHere" />
-    <title>E-commerce Store</title>
+    <title>MERN E-commerce</title>
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <style>
+      /* Basic global styling for clarity */
+      body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4;}
+      .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+      nav { background: #333; color: white; padding: 10px 0;}
+      nav a { color: white; margin: 0 15px; text-decoration: none; }
+      nav button { padding: 5px 10px; cursor: pointer; }
+      form { background: white; padding: 20px; border-radius: 5px; }
+      input { display: block; margin: 10px 0; padding: 8px; width: 100%; box-sizing: border-box; }
+      button { padding: 10px 15px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
+      .alert-success { color: green; }
+      .alert-error { color: red; }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    
-    <!-- PayHere SDK - CRITICAL for payment integration -->
-    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <div id="root" class="container"></div>
   </body>
 </html>
