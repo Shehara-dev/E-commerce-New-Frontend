@@ -1,4 +1,3 @@
-// src/pages/client/Checkout.jsx
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -6,15 +5,13 @@ import { createOrder } from '../../services/orderService.js';
 import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
-  // ... rest of your code ...
-  // (The rest of your code from before is correct)
   const { cartItems, cartTotal, clearCart } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
 
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState('payhere'); // 'payhere' or 'cash_on_delivery'
+  const [paymentMethod, setPaymentMethod] = useState('payhere');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -74,10 +71,10 @@ const Checkout = () => {
           throw new Error('PayHere payment data not received or PayHere SDK not loaded.');
         }
       } else {
-        // Cash on Delivery
+        
         console.log('Cash on Delivery order placed:', response.data.order);
         clearCart();
-        navigate('/my-orders'); // Redirect to my orders page
+        navigate('/my-orders');
         setLoading(false);
       }
 
@@ -92,7 +89,7 @@ const Checkout = () => {
     <div className="container mx-auto p-4 max-w-4xl">
       <h1 className="text-3xl font-bold mb-6 text-center">Checkout</h1>
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Shipping Form */}
+        
         <div className="md:w-1/2">
           <h2 className="text-2xl font-semibold mb-4">Shipping Information</h2>
           <form id="checkout-form" onSubmit={handleSubmit} className="space-y-4">
@@ -124,7 +121,7 @@ const Checkout = () => {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 required
-                placeholder="123 Main St, Colombo"
+                placeholder="Enter your address"
                 className="w-full p-2 mt-1 border rounded focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
@@ -138,7 +135,7 @@ const Checkout = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                placeholder="0771234567"
+                placeholder="Enter your phone number"
                 className="w-full p-2 mt-1 border rounded focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
@@ -146,7 +143,7 @@ const Checkout = () => {
             {/* Payment Method */}
             <h2 className="text-xl font-semibold pt-4">Payment Method</h2>
             <div className="space-y-2">
-              <div className="flex items-center p-3 border rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500">
+              <div className="flex items-center p-3 border rounded has-checked:bg-blue-50 has-checked:border-blue-500">
                 <input 
                   type="radio"
                   id="payhere"
@@ -160,7 +157,7 @@ const Checkout = () => {
                   Pay with PayHere (Credit/Debit Card)
                 </label>
               </div>
-              <div className="flex items-center p-3 border rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500">
+              <div className="flex items-center p-3 border rounded has-checked:bg-blue-50 has-checked:border-blue-500">
                 <input 
                   type="radio"
                   id="cod"
@@ -178,7 +175,7 @@ const Checkout = () => {
           </form>
         </div>
 
-        {/* Order Summary */}
+        
         <div className="md:w-1/2">
           <div className="border rounded-lg p-6 bg-gray-50">
             <h2 className="text-2xl font-semibold mb-4">Your Order</h2>
@@ -186,14 +183,14 @@ const Checkout = () => {
               {cartItems.map(item => (
                 <div key={item.productId} className="flex justify-between text-sm">
                   <span>{item.name} x {item.qty}</span>
-                  <span>${(item.price * item.qty).toFixed(2)}</span>
+                  <span>Rs:{(item.price * item.qty).toFixed(2)}</span>
                 </div>
               ))}
             </div>
             <hr className="my-4" />
             <div className="flex justify-between font-bold text-xl">
               <span>Total</span>
-              <span>${cartTotal.toFixed(2)}</span>
+              <span>Rs:{cartTotal.toFixed(2)}</span>
             </div>
             
             {error && <p className="text-red-500 text-center mt-4">{error}</p>}

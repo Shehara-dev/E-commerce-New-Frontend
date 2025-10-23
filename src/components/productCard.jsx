@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
         />
       </Link>
 
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-4 flex flex-col grow">
         <h3 className="text-lg font-semibold text-gray-800 truncate" title={product.name}>
           {product.name}
         </h3>
@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
         {user?.role !== 'Admin' ? (
           <button
             onClick={handleAddToCart}
-            className="mt-auto w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition-all duration-300"
+            className="mt-auto w-full bg-linear-to-r from-blue-500 to-indigo-600 text-white py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition-all duration-300"
           >
             Add to Cart
           </button>

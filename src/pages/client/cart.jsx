@@ -1,4 +1,3 @@
-// src/pages/client/Cart.jsx
 import React from 'react';
 import { useCart } from '../../context/CartContext.jsx';
 import { Link } from 'react-router-dom';
@@ -12,7 +11,7 @@ const Cart = () => {
         <h1 className="text-4xl font-extrabold mb-6 text-gray-800">Your Cart is Empty</h1>
         <Link
           to="/"
-          className="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition"
+          className="inline-block mt-4 px-6 py-3 bg-linear-to-r from-blue-500 to-indigo-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition"
         >
           Start Shopping
         </Link>
@@ -36,9 +35,9 @@ const Cart = () => {
                 alt={item.name}
                 className="w-24 h-24 object-cover rounded-lg"
               />
-              <div className="flex-grow">
+              <div className="grow">
                 <h3 className="font-semibold text-gray-800 text-lg">{item.name}</h3>
-                <p className="text-gray-600 mt-1">${item.price.toFixed(2)}</p>
+                <p className="text-gray-600 mt-1">Rs:{item.price.toFixed(2)}</p>
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -83,7 +82,7 @@ const Cart = () => {
             </div>
             <Link
               to="/checkout"
-              className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-3 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition block"
+              className="w-full bg-linear-to-r from-blue-500 to-indigo-600 text-white text-center py-3 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition block"
             >
               Proceed to Checkout
             </Link>

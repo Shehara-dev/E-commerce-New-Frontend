@@ -1,4 +1,3 @@
-// src/pages/client/ProductDetail.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../../services/productService.js';
@@ -42,7 +41,7 @@ const ProductDetail = () => {
   return (
     <div className="container mx-auto p-6 mt-8">
       <div className="flex flex-col md:flex-row gap-12">
-        {/* Product Image */}
+        
         <div className="md:w-1/2 bg-white rounded-xl shadow-lg overflow-hidden">
           <img
             src={product.image[0]}
@@ -51,7 +50,7 @@ const ProductDetail = () => {
           />
         </div>
 
-        {/* Product Details */}
+        
         <div className="md:w-1/2 flex flex-col justify-between">
           <div>
             <h1 className="text-4xl font-bold mb-3 text-gray-800">{product.name}</h1>
@@ -85,7 +84,7 @@ const ProductDetail = () => {
                 />
                 <button
                   onClick={handleAddToCart}
-                  className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition"
+                  className="bg-linear-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition"
                 >
                   Add to Cart
                 </button>

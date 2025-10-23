@@ -1,4 +1,3 @@
-// src/pages/client/MyOrders.jsx
 import React, { useState, useEffect } from 'react';
 import { getMyOrders } from '../../services/orderService.js';
 
@@ -79,7 +78,7 @@ const MyOrders = () => {
                 {/* Order Summary */}
                 <div className="text-right">
                   <p className="text-lg font-semibold text-gray-800">
-                    Total: ${order.total.toFixed(2)}
+                    Total: Rs:{order.total.toFixed(2)}
                   </p>
                   <p className="text-sm text-gray-500">
                     Payment: {order.paymentMethod.replace('_', ' ')} ({order.paymentStatus})

@@ -1,4 +1,3 @@
-// src/pages/client/PaymentSuccess.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 

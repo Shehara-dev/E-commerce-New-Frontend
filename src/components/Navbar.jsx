@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         
         <Link to="/" className="text-2xl font-extrabold text-blue-600 hover:text-blue-700 transition">
-          E-Online Shpo
+          E-Online Shop
         </Link>
 
         
@@ -65,7 +65,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/register"
-                className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition"
+                className="bg-linear-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition"
               >
                 Register
               </Link>

@@ -1,4 +1,3 @@
-// src/pages/client/Home.jsx
 import React, { useState, useEffect } from 'react';
 import { getAllProducts, searchProducts } from '../../services/productService.js';
 import ProductCard from '../../components/ProductCard.jsx';
@@ -59,11 +58,11 @@ const Home = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search for products..."
-          className="flex-grow px-4 py-3 border-none focus:ring-0 focus:outline-none"
+          className="grow px-4 py-3 border-none focus:ring-0 focus:outline-none"
         />
         <button
           type="submit"
-          className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300"
+          className="bg-linear-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300"
         >
           Search
         </button>

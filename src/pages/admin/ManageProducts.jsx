@@ -1,11 +1,5 @@
-// src/pages/admin/ManageProducts.jsx
 import React, { useState, useEffect } from 'react';
-import { 
-  getAllProducts, 
-  deleteProduct, 
-  createProduct,
-  updateProduct 
-} from '../../services/productService.js';
+import { getAllProducts, deleteProduct, createProduct,updateProduct } from '../../services/productService.js';
 
 function EditModal({ product, onClose, onSave }) {
   const [formData, setFormData] = useState(product);
@@ -169,7 +163,7 @@ const ManageProducts = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Manage Products</h1>
 
-      {/* Create Product Form */}
+      
       <details className="mb-6 border rounded-lg p-4 bg-white shadow hover:shadow-md transition">
         <summary className="font-semibold text-xl cursor-pointer">Create New Product</summary>
         <form onSubmit={handleCreateSubmit} className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -187,7 +181,7 @@ const ManageProducts = () => {
         </form>
       </details>
 
-      {/* Existing Products Table */}
+      
       <h2 className="text-2xl font-semibold mb-4 text-gray-800">Existing Products</h2>
       <div className="overflow-x-auto bg-white rounded-xl shadow-md">
         <table className="min-w-full">
