@@ -1,4 +1,3 @@
-// src/components/ProductCard.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
@@ -31,7 +30,7 @@ const ProductCard = ({ product }) => {
           <span className="text-blue-600 font-bold text-lg">Rs:{product.price.toFixed(2)}</span>
           {product.labelledPrice > product.price && (
             <span className="text-gray-400 line-through text-sm">
-              ${product.labelledPrice.toFixed(2)}
+              Rs:{product.labelledPrice.toFixed(2)}
             </span>
           )}
         </div>

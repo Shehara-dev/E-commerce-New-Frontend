@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -19,12 +18,12 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
+        
         <Link to="/" className="text-2xl font-extrabold text-blue-600 hover:text-blue-700 transition">
-          E-Commerce
+          E-Online Shpo
         </Link>
 
-        {/* Navigation Links */}
+        
         <div className="flex items-center space-x-5">
           <Link to="/" className="text-gray-700 hover:text-blue-600 transition font-medium">
             Home

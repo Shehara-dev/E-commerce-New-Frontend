@@ -1,4 +1,3 @@
-// src/services/productService.js
 import api from './api.js';
 
 export const getAllProducts = () => {
@@ -12,8 +11,6 @@ export const getProductById = (productId) => {
 export const searchProducts = (query) => {
   return api.get(`/products/search/${query}`);
 };
-
-// --- Admin Only ---
 
 export const createProduct = (productData) => {
   return api.post('/products', productData);

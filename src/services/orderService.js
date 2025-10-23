@@ -1,4 +1,3 @@
-// src/services/orderService.js
 import api from './api.js';
 
 export const createOrder = (orderData) => {
@@ -9,7 +8,6 @@ export const getMyOrders = (page = 1, limit = 10) => {
   return api.get(`/orders/${page}/${limit}`);
 };
 
-// --- Admin Only ---
 
 export const getAllOrders = (page = 1, limit = 10) => {
   return api.get(`/orders/${page}/${limit}`);
