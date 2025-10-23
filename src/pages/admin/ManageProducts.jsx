@@ -64,7 +64,7 @@ function EditModal({ product, onClose, onSave }) {
             <button type="button" onClick={onClose} className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition">
               Cancel
             </button>
-            <button type="submit" className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-indigo-700 transition">
+            <button type="submit" className="bg-linear-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-indigo-700 transition">
               Save Changes
             </button>
           </div>
@@ -175,7 +175,7 @@ const ManageProducts = () => {
           <input name="category" value={newProduct.category} onChange={handleCreateFormChange} placeholder="Category" required className="p-2 border rounded" />
           <input name="image" value={newProduct.image} onChange={handleCreateFormChange} placeholder="Image URL" className="p-2 border rounded md:col-span-2" />
           <textarea name="description" value={newProduct.description} onChange={handleCreateFormChange} placeholder="Description" required className="p-2 border rounded md:col-span-2" />
-          <button type="submit" className="md:col-span-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg hover:from-blue-600 hover:to-indigo-700 transition">
+          <button type="submit" className="md:col-span-2 bg-linear-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg hover:from-blue-600 hover:to-indigo-700 transition">
             Create Product
           </button>
         </form>
