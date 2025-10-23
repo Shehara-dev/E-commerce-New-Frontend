@@ -1,60 +1,71 @@
 // src/context/CartContext.jsx
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => {
+  return useContext(CartContext);
+};
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState(() => {
-        const localCart = localStorage.getItem('cart');
-        return localCart ? JSON.parse(localCart) : [];
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const localData = localStorage.getItem('cart');
+      return localData ? JSON.parse(localData) : [];
+    } catch (error) {
+      console.error('Could not parse cart from localStorage', error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const addToCart = (product, quantity) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.productId === product.productId);
+
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.productId === product.productId
+            ? { ...item, qty: item.qty + quantity }
+            : item
+        );
+      } else {
+        return [...prevItems, { ...product, qty: quantity }];
+      }
     });
+  };
 
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart]);
+  const updateQuantity = (productId, quantity) => {
+    setCartItems((prevItems) => {
+      return prevItems.map((item) =>
+        item.productId === productId ? { ...item, qty: quantity } : item
+      ).filter(item => item.qty > 0);
+    });
+  };
 
-    const addToCart = (product, qty = 1) => {
-        setCart(prevCart => {
-            const existingItem = prevCart.find(item => item.productId === product.productId);
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) => {
+      return prevItems.filter((item) => item.productId !== productId);
+    });
+  };
 
-            if (existingItem) {
-                // Update quantity
-                return prevCart.map(item =>
-                    item.productId === product.productId
-                        ? { ...item, qty: item.qty + qty }
-                        : item
-                );
-            } else {
-                // Add new item
-                return [...prevCart, { ...product, qty }];
-            }
-        });
-    };
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
-    const removeFromCart = (productId) => {
-        setCart(prevCart => prevCart.filter(item => item.productId !== productId));
-    };
+  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.qty, 0);
 
-    const updateQuantity = (productId, newQty) => {
-        setCart(prevCart => prevCart.map(item =>
-            item.productId === productId
-                ? { ...item, qty: newQty }
-                : item
-        ));
-    };
+  const value = {
+    cartItems,
+    addToCart,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    cartTotal,
+  };
 
-    const clearCart = () => {
-        setCart([]);
-    };
-
-    const cartTotal = cart.reduce((total, item) => total + (item.price * item.qty), 0);
-    const cartCount = cart.reduce((count, item) => count + item.qty, 0);
-
-    return (
-        <CartContext.Provider value={{ cart, cartTotal, cartCount, addToCart, removeFromCart, updateQuantity, clearCart }}>
-            {children}
-        </CartContext.Provider>
-    );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

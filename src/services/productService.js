@@ -1,35 +1,28 @@
 // src/services/productService.js
-import api from './api';
+import api from './api.js';
 
-const productService = {
-    getProducts: async () => {
-        const response = await api.get('/products');
-        return response.data;
-    },
-    
-    getProductDetail: async (productId) => {
-        const response = await api.get(`/products/${productId}`);
-        return response.data;
-    },
-    
-    searchProducts: async (query) => {
-        const response = await api.get(`/products/search/${query}`);
-        return response.data;
-    },
-
-    // Admin-only functions
-    createProduct: async (productData) => {
-        const response = await api.post('/products', productData);
-        return response.data;
-    },
-    updateProduct: async (productId, productData) => {
-        const response = await api.put(`/products/${productId}`, productData);
-        return response.data;
-    },
-    deleteProduct: async (productId) => {
-        const response = await api.delete(`/products/${productId}`);
-        return response.data;
-    }
+export const getAllProducts = () => {
+  return api.get('/products');
 };
 
-export default productService;
+export const getProductById = (productId) => {
+  return api.get(`/products/${productId}`);
+};
+
+export const searchProducts = (query) => {
+  return api.get(`/products/search/${query}`);
+};
+
+// --- Admin Only ---
+
+export const createProduct = (productData) => {
+  return api.post('/products', productData);
+};
+
+export const updateProduct = (productId, productData) => {
+  return api.put(`/products/${productId}`, productData);
+};
+
+export const deleteProduct = (productId) => {
+  return api.delete(`/products/${productId}`);
+};

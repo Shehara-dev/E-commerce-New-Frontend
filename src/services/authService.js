@@ -1,33 +1,14 @@
 // src/services/authService.js
-import api from './api';
+import api from './api.js';
 
-const authService = {
-    login: async (email, password) => {
-        try {
-            const response = await api.post('/user/login', { email, password });
-            if (response.data.token) {
-                localStorage.setItem('token', response.data.token);
-                localStorage.setItem('user', JSON.stringify(response.data.user));
-            }
-            return response.data;
-        } catch (error) {
-            throw error.response.data || { message: "Login failed" };
-        }
-    },
-
-    register: async (name, email, password) => {
-        try {
-            const response = await api.post('/user', { name, email, password });
-            return response.data;
-        } catch (error) {
-            throw error.response.data || { message: "Registration failed" };
-        }
-    },
-
-    logout: () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-    }
+export const login = (credentials) => {
+  return api.post('/user/login', credentials);
 };
 
-export default authService;
+export const register = (userData) => {
+  return api.post('/user', userData);
+};
+
+export const getProfile = () => {
+  return api.get('/user');
+};
