@@ -61,12 +61,11 @@ const Checkout = () => {
       const response = await createOrder(orderData);
       
       if (paymentMethod === 'payhere') {
-        // We received payhereData from the backend
-        // Trigger the PayHere payment popup
+        
         if (response.data.payhereData && window.payhere) {
           console.log('Starting PayHere payment with data:', response.data.payhereData);
           window.payhere.startPayment(response.data.payhereData);
-          // The loading(false) will be handled by the onDismissed or onError callbacks
+          
         } else {
           throw new Error('PayHere payment data not received or PayHere SDK not loaded.');
         }

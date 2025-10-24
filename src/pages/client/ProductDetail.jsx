@@ -58,7 +58,7 @@ const ProductDetail = () => {
               <span className="text-3xl text-blue-600 font-semibold">${product.price.toFixed(2)}</span>
               {product.labelledPrice > product.price && (
                 <span className="text-gray-400 line-through text-lg">
-                  ${product.labelledPrice.toFixed(2)}
+                  Rs:{product.labelledPrice.toFixed(2)}
                 </span>
               )}
             </div>
